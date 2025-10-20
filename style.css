@@ -1,0 +1,394 @@
+/* ===== GLOBAL THEME ===== */
+body {
+  background: linear-gradient(135deg, #1f1f1f, #2a0038);
+  color: #f8f9fa;
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  background-color: rgba(0, 0, 0, 0.75) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid #9146FF; /* Twitch purple */
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #fff !important;
+}
+
+.navbar-brand span {
+  color: #9146FF;
+}
+
+#liveBadge {
+  animation: pulse 1s infinite;
+  background-color: #e00000;
+  box-shadow: 0 0 10px rgba(255, 50, 50, 0.8);
+}
+
+/* Pulse animation for LIVE badge */
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+/* ===== MAIN CONTAINER ===== */
+.container {
+  flex: 1;
+  margin-top: 40px;
+}
+
+.card {
+  border: none;
+  background-color: #2c2c2c;
+  color: #fff;
+  border-radius: 15px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 15px rgba(145, 70, 255, 0.4);
+}
+
+.card .card-body {
+  padding: 1.5rem;
+}
+
+/* Twitch video styling */
+.ratio iframe {
+  border-radius: 10px;
+  border: 2px solid #9146FF;
+  box-shadow: 0 0 20px rgba(145, 70, 255, 0.3);
+}
+
+/* ===== BUTTONS ===== */
+.btn-primary {
+  background: linear-gradient(90deg, #9146FF, #b366ff);
+  border: none;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(90deg, #b366ff, #9146FF);
+  transform: translateY(-2px);
+}
+
+.btn-success {
+  background: linear-gradient(90deg, #28a745, #5cff94);
+  border: none;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-success:hover {
+  background: linear-gradient(90deg, #5cff94, #28a745);
+  transform: translateY(-2px);
+}
+
+.btn-warning {
+  color: #000;
+  font-weight: 600;
+  background: linear-gradient(90deg, #f7e600, #ffb300);
+  border: none;
+}
+
+.btn-warning:hover {
+  background: linear-gradient(90deg, #ffb300, #f7e600);
+}
+
+/* ===== CARD COLLECTION ===== */
+#cardCollection {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.card-card {
+  width: 140px;
+  height: 180px;
+  background: linear-gradient(145deg, #3a3a3a, #212121);
+  border: 1px solid #9146FF;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(145, 70, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-image {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #fff;
+  margin-top: 50%;
+  transform: translateY(-50%);
+}
+
+/* ===== BADGES ===== */
+.badge-debuff {
+  background: #ff3366;
+  color: #fff;
+  padding: 3px 7px;
+  border-radius: 5px;
+  font-size: 0.75rem;
+}
+
+/* ===== CARD FLIP ANIMATION ===== */
+.card-flip {
+  width: 150px;
+  height: 210px;
+  perspective: 1000px;
+  display: inline-block;
+  animation: popIn 0.4s ease forwards;
+  transform: scale(0);
+}
+
+@keyframes popIn {
+  to { transform: scale(1); }
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+.card-flip.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(145, 70, 255, 0.3);
+}
+
+.card-front {
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-front img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.card-back {
+  background: linear-gradient(145deg, #2c003e, #45006b);
+  transform: rotateY(180deg);
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+.card-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.card-rarity {
+  font-size: 0.9rem;
+  color: #ffd700;
+}
+
+.card-debuff {
+  margin-top: 8px;
+  color: #ff4444;
+  font-weight: bold;
+}
+
+.no-debuff {
+  margin-top: 8px;
+  color: #aaa;
+}
+
+/* ===== MODAL ===== */
+.modal-content {
+  background-color: #2c2c2c;
+  border-radius: 15px;
+  color: #fff;
+}
+
+.modal-header {
+  border-bottom: 1px solid #444;
+}
+
+.modal-footer {
+  border-top: 1px solid #444;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-top: 2px solid #9146FF;
+  color: #aaa;
+  font-size: 0.9rem;
+  margin-top: auto;
+}
+
+/* ===== RARE OVERLAY ===== */
+.rare-overlay {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(145, 70, 255, 0.9);
+  color: white;
+  font-size: 1.5rem;
+  padding: 20px 40px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(145, 70, 255, 0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  z-index: 999;
+}
+
+.rare-overlay.visible {
+  opacity: 1;
+}
+
+/* ===== SWIPE PACK OPENING ===== */
+.viewer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.card-display {
+  width: 200px;
+  height: 280px;
+  perspective: 1000px;
+  position: relative;
+  overflow: hidden;
+}
+
+.swipe-card {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transition: transform 0.5s ease;
+}
+
+.swipe-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.swipe-card.flip-ready .card-inner {
+  transition: transform 1s ease;
+}
+
+.swipe-card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* card inner/front/back for swipe viewer */
+.swipe-card .card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.swipe-card .card-front,
+.swipe-card .card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(145, 70, 255, 0.4);
+}
+
+.swipe-card .card-front {
+  background: #000;
+}
+
+.swipe-card .card-back {
+  background: linear-gradient(145deg, #2c003e, #45006b);
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  transform: rotateY(180deg);
+}
+
+.swipe-card .card-name {
+  font-weight: 700;
+  margin-top: 10px;
+  font-size: 1.1rem;
+}
+
+.swipe-card .card-rarity {
+  font-size: 0.9rem;
+  color: #ffd700;
+  margin-top: 5px;
+}
+
+.swipe-card .card-debuff {
+  margin-top: 8px;
+  color: #ff4444;
+  font-weight: bold;
+}
+
+/* Controls */
+.viewer-controls {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.viewer-controls button {
+  background-color: #9146FF;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.viewer-controls button:hover {
+  transform: scale(1.05);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .card-card {
+    width: 110px;
+    height: 150px;
+  }
+
+  .navbar-brand {
+    font-size: 1.2rem;
+  }
+
+  .card-flip {
+    width: 120px;
+    height: 170px;
+  }
+}
